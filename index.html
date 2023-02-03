@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title> Informatica Grafica </title>
+  <!-- reference to css -->
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="w-screen h-screen flex flex-col items-center justify-center">
+      <h1 class="text-4xl font-bold">Modelo Atómico 3D</h1>
+      <table id="MainTable">
+        <tbody>
+          <tr>
+            <td class="h" onclick="handleClick('H')">
+              <div id="H">
+                <strong class="">H</strong>
+                <span class="an">1</span>
+                <p>Hydrogen</p>
+              </div>
+            </td>
+            <td colspan="1" id="ppty">&nbsp;</td>
+            <td colspan="5" rowspan="3" id="Info">
+              <table class="ElpentDetails">
+                <tbody>
+                  <tr>
+                    <td id="LS" class="ng" style="visibility: visible;">
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+            <td colspan="5" rowspan="3" id="Info">
+              <table class="List">
+                <tbody>
+                  <tr>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+            <td colspan="5" id="ppty">&nbsp;</td>
+            <td class="ng" onclick="handleClick('He')">
+              <div class="el">
+                <strong>He</strong>
+                <span class="an">2</span>
+                <p>Helium</p>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="am" onclick="handleClick('Li')">
+              <div class="el">
+                <strong>Li</strong>
+                <span class="an">3</span>
+                <p>Lithium</p>
+              </div>
+            </td>
+            <td class="ap" onclick="handleClick('Be')">
+              <div class="el">
+                <strong>Be</strong>
+                <span class="an">4</span>
+                <p>Beryllium</p>
+              </div>
+            </td>
+            <td class="m" onclick="handleClick('B')">
+              <div class="el">
+                <strong>B</strong>
+                <span class="an">5</span>
+                <p>Boron</p>
+              </div>
+            </td>
+            <td class="nm" onclick="handleClick('C')">
+              <div class="el">
+                <strong>C</strong>
+                <span class="an">6</span>
+                <p>Carbon</p>
+              </div>
+            </td>
+            <td class="nm" onclick="handleClick('N')">
+              <div class="el">
+                <strong>N</strong>
+                <span class="an">7</span>
+                <p>Nitrogen</p>
+              </div>
+            </td>
+            <td class="nm" onclick="handleClick('O')">
+              <div class="el">
+                <strong>O</strong>
+                <span class="an">8</span>
+                <p>Oxygen</p>
+              </div>
+            </td>
+            <td class="ha" onclick="handleClick('F')">
+              <div class="el">
+                <strong>F</strong>
+                <span class="an">9</span>
+                <p>Fluorine</p>
+              </div>
+            </td>
+            <td class="ng" onclick="handleClick('Ne')">
+              <div class="el">
+                <strong>Ne</strong>
+                <span class="an">10</span>
+                <p>Neon</p>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="am" onclick="handleClick('Na')">
+              <div class="el">
+                <strong>Na</strong>
+                <span class="an">11</span>
+                <p>Sodium</p>
+              </div>
+            </td>
+            <td class="ap" onclick="handleClick('Mg')">
+              <div class="el">
+                <strong>Mg</strong>
+                <span class="an">12</span>
+                <p class="ts">Magnesium</p>
+              </div>
+            </td>
+            <td class="ptm" onclick="handleClick('Al')">
+              <div class="el">
+                <strong>Al</strong>
+                <span class="an">13</span>
+                <p class="ts">Aluminium</p>
+              </div>
+            </td>
+            <td class="m" onclick="handleClick('Si')">
+              <div class="el">
+                <strong>Si</strong>
+                <span class="an">14</span>
+                <p>Silicon</p>
+              </div>
+            </td>
+            <td class="nm" onclick="handleClick('P')">
+              <div class="el">
+                <strong>P</strong>
+                <span class="an">15</span>
+                <p class="ts">Phosphorus</p>
+              </div>
+            </td>
+            <td class="nm" onclick="handleClick('S')">
+              <div class="el">
+                <strong>S</strong>
+                <span class="an">16</span>
+                <p>Sulfur</p>
+              </div>
+            </td>
+            <td class="ha" onclick="handleClick('Cl')">
+              <div class="el">
+                <strong>Cl</strong>
+                <span class="an">17</span>
+                <p>Chlorine</p>
+              </div>
+            </td>
+            <td class="ng" onclick="handleClick('Ar')">
+              <div class="el">
+                <strong>Ar</strong>
+                <span class="an">18</span>
+                <p>Argon</p>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="am" onclick="handleClick('K')">
+              <div class="el">
+                <strong>K</strong>
+                <span class="an">19</span>
+                <p>Potassium</p>
+              </div>
+            </td>
+            <td class="ap" onclick="handleClick('Ca')">
+              <div class="el">
+                <strong>Ca</strong>
+                <span class="an">20</span>
+                <p>Calcium</p>
+              </div>
+            </td>
+            <td class="tm" onclick="handleClick('Sc')">
+              <div class="el">
+                <strong>Sc</strong>
+                <span class="an">21</span>
+                <p class="ts">Scandium</p>
+              </div>
+            </td>
+            <td class="tm" onclick="handleClick('Ti')">
+              <div class="el">
+                <strong>Ti</strong>
+                <span class="an">22</span>
+                <p>Titanium</p>
+              </div>
+            </td>
+            <td class="tm" onclick="handleClick('V')">
+              <div class="el">
+                <strong>V</strong>
+                <span class="an">23</span>
+                <p class="ts">Vanadium</p>
+              </div>
+            </td>
+            <td class="tm" onclick="handleClick('Cr')">
+              <div class="el">
+                <strong>Cr</strong>
+                <span class="an">24</span>
+                <p class="ts">Chromium</p>
+              </div>
+            </td>
+            <td class="tm" onclick="handleClick('Mn')">
+              <div class="el">
+                <strong>Mn</strong>
+                <span class="an">25</span>
+                <p class="ts">Manganese</p>
+              </div>
+            </td>
+            <td class="tm" onclick="handleClick('Fe')">
+              <div class="el">
+                <strong>Fe</strong>
+                <span class="an">26</span>
+                <p>Iron</p>
+              </div>
+            </td>
+            <td class="tm" onclick="handleClick('Co')">
+              <div class="el">
+                <strong>Co</strong>
+                <span class="an">27</span>
+                <p>Cobalt</p>
+              </div>
+            </td>
+            <td class="tm" onclick="handleClick('Ni')">
+              <div class="el">
+                <strong>Ni</strong>
+                <span class="an">28</span>
+                <p>Nickel</p>
+              </div>
+            </td>
+            <td class="tm" onclick="handleClick('Cu')">
+              <div class="el">
+                <strong>Cu</strong>
+                <span class="an">29</span>
+                <p>Copper</p>
+              </div>
+            </td>
+            <td class="tm" onclick="handleClick('Zn')">
+              <div class="el">
+                <strong>Zn</strong>
+                <span class="an">30</span>
+                <p>Zinc</p>
+              </div>
+            </td>
+            <td class="ptm" onclick="handleClick('Ga')">
+              <div class="el">
+                <strong>Ga</strong>
+                <span class="an">31</span>
+                <p>Gallium</p>
+              </div>
+            </td>
+            <td class="m" onclick="handleClick('Ge')">
+              <div class="el">
+                <strong>Ge</strong>
+                <span class="an">32</span>
+                <p class="ts">Germanium</p>
+              </div>
+            </td>
+            <td class="m" onclick="handleClick('As')">
+              <div class="el">
+                <strong>As</strong>
+                <span class="an">33</span>
+                <p>Arsenic</p>
+              </div>
+            </td>
+            <td class="nm" onclick="handleClick('Se')">
+              <div class="el">
+                <strong>Se</strong>
+                <span class="an">34</span>
+                <p class="ts">Selenium</p>
+              </div>
+            </td>
+            <td class="ha" onclick="handleClick('Br')">
+              <div class="el">
+                <strong>Br</strong>
+                <span class="an">35</span>
+                <p>Bromine</p>
+              </div>
+            </td>
+            <td class="ng" onclick="handleClick('Kr')">
+              <div class="el">
+                <strong>Kr</strong>
+                <span class="an">36</span>
+                <p>Krypton</p>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="am" onclick="handleClick('Rb')">
+              <div class="el">
+                <strong>Rb</strong>
+                <span class="an">37</span>
+                <p>Rubidium</p>
+              </div>
+            </td>
+            <td class="ap" onclick="handleClick('Sr')">
+              <div class="el">
+                <strong>Sr</strong>
+                <span class="an">38</span>
+                <p>Strontium</p>
+              </div>
+            </td>
+            <td class="tm" onclick="handleClick('Y')">
+              <div class="el">
+                <strong>Y</strong>
+                <span class="an">39</span>
+                <p>Yttrium</p>
+              </div>
+            </td>
+            <td class="tm" onclick="handleClick('Zr')">
+              <div class="el">
+                <strong>Zr</strong>
+                <span class="an">40</span>
+                <p class="ts">Zirconium</p>
+              </div>
+            </td>
+            <td class="tm" onclick="handleClick('Nb')">
+              <div class="el">
+                <strong>Nb</strong>
+                <span class="an">41</span>
+                <p>Niobium</p>
+              </div>
+            </td>
+            <td class="tm" onclick="handleClick('Mo')">
+              <div class="el">
+                <strong>Mo</strong>
+                <span class="an">42</span>
+                <p class="ts">Molybdenum</p>
+              </div>
+            </td>
+            <td class="tm" onclick="handleClick('Tc')">
+              <div class="el">
+                <strong>Tc</strong>
+                <span class="an">43</span>
+                <p class="ts">Technetium</p>
+              </div>
+            </td>
+            <td class="tm" onclick="handleClick('Ru')">
+              <div class="el">
+                <strong>Ru</strong>
+                <span class="an">44</span>
+                <p class="ts">Ruthenium</p>
+              </div>
+            </td>
+            <td class="tm" onclick="handleClick('Rh')">
+              <div class="el">
+                <strong>Rh</strong>
+                <span class="an">45</span>
+                <p>Rhodium</p>
+              </div>
+            </td>
+            <td class="tm" onclick="handleClick('Pd')">
+              <div class="el">
+                <strong>Pd</strong>
+                <span class="an">46</span>
+                <p class="ts">Palladium</p>
+              </div>
+            </td>
+            <td class="tm" onclick="handleClick('Ag')">
+              <div class="el">
+                <strong>Ag</strong>
+                <span class="an">47</span>
+                <p>Silver</p>
+              </div>
+            </td>
+            <td class="tm" onclick="handleClick('Cd')">
+              <div class="el">
+                <strong>Cd</strong>
+                <span class="an">48</span>
+                <p>Cadmium</p>
+              </div>
+            </td>
+            <td class="ptm" onclick="handleClick('In')">
+              <div class="el">
+                <strong>In</strong>
+                <span class="an">49</span>
+                <p>Indium</p>
+              </div>
+            </td>
+            <td class="ptm" onclick="handleClick('Sn')">
+              <div class="el">
+                <strong>Sn</strong>
+                <span class="an">50</span>
+                <p>Tin</p>
+              </div>
+            </td>
+            <td class="m" onclick="handleClick('Sb')">
+              <div class="el">
+                <strong>Sb</strong>
+                <span class="an">51</span>
+                <p>Antimony</p>
+              </div>
+            </td>
+            <td class="m" onclick="handleClick('Te')">
+              <div class="el">
+                <strong>Te</strong>
+                <span class="an">52</span>
+                <p class="ts">Tellurium</p>
+              </div>
+            </td>
+            <td class="ha" onclick="handleClick('I')">
+              <div class="el">
+                <strong>I</strong>
+                <span class="an">53</span>
+                <p>Iodine</p>
+              </div>
+            </td>
+            <td class="ng" onclick="handleClick('Xe')">
+              <div class="el">
+                <strong>Xe</strong>
+                <span class="an">54</span>
+                <p>Xenon</p>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="am" onclick="handleClick('Cs')">
+              <div class="el">
+                <strong>Cs</strong>
+                <span class="an">55</span>
+                <p>Caesium</p>
+              </div>
+            </td>
+            <td class="ap" onclick="handleClick('Ba')">
+              <div class="el">
+                <strong>Ba</strong>
+                <span class="an">56</span>
+                <p>Barium</p>
+              </div>
+            </td>
+            <td class="la" onclick="handleClick('La')">
+              <div class="el">
+                <strong>La</strong>
+                <span class="an">57</span>
+                <p class="ts">Lanthanum</p>
+              </div>
+            </td>
+            <td class="tm" onclick="handleClick('Hf')">
+              <div class="el">
+                <strong>Hf</strong>
+                <span class="an">72</span>
+                <p>Hafnium</p>
+              </div>
+            </td>
+            <td class="tm" onclick="handleClick('Ta')">
+              <div class="el">
+                <strong>Ta</strong>
+                <span class="an">73</span>
+                <p>Tantalum</p>
+              </div>
+            </td>
+            <td class="tm" onclick="handleClick('W')">
+              <div class="el">
+                <strong>W</strong>
+                <span class="an">74</span>
+                <p>Tungsten</p>
+              </div>
+            </td>
+            <td class="tm" onclick="handleClick('Re')">
+              <div class="el">
+                <strong>Re</strong>
+                <span class="an">75</span>
+                <p>Rhenium</p>
+              </div>
+            </td>
+            <td class="tm" onclick="handleClick('Os')">
+              <div class="el">
+                <strong>Os</strong>
+                <span class="an">76</span>
+                <p>Osmium</p>
+              </div>
+            </td>
+            <td class="tm" onclick="handleClick('Ir')">
+              <div class="el">
+                <strong>Ir</strong>
+                <span class="an">77</span>
+                <p>Iridium</p>
+              </div>
+            </td>
+            <td class="tm" onclick="handleClick('Pt')">
+              <div class="el">
+                <strong>Pt</strong>
+                <span class="an">78</span>
+                <p>Platinum</p>
+              </div>
+            </td>
+            <td class="tm" onclick="handleClick('Au')">
+              <div class="el">
+                <strong>Au</strong>
+                <span class="an">79</span>
+                <p>Gold</p>
+              </div>
+            </td>
+            <td class="tm" onclick="handleClick('Hg')">
+              <div class="el">
+                <strong>Hg</strong>
+                <span class="an">80</span>
+                <p>Mercury</p>
+              </div>
+            </td>
+            <td class="ptm" onclick="handleClick('Tl')">
+              <div class="el">
+                <strong>Tl</strong>
+                <span class="an">81</span>
+                <p>Thallium</p>
+              </div>
+            </td>
+            <td class="ptm" onclick="handleClick('Pb')">
+              <div class="el">
+                <strong>Pb</strong>
+                <span class="an">82</span>
+                <p>Lead</p>
+              </div>
+            </td>
+            <td class="ptm" onclick="handleClick('Bi')">
+              <div class="el">
+                <strong>Bi</strong>
+                <span class="an">83</span>
+                <p>Bismuth</p>
+              </div>
+            </td>
+            <td class="m" onclick="handleClick('Po')">
+              <div class="el">
+                <strong>Po</strong>
+                <span class="an">84</span>
+                <p>Polonium</p>
+              </div>
+            </td>
+            <td class="ha" onclick="handleClick('At')">
+              <div class="el">
+                <strong>At</strong>
+                <span class="an">85</span>
+                <p>Astatine</p>
+              </div>
+            </td>
+            <td class="ng" onclick="handleClick('Rn')">
+              <div class="el">
+                <strong>Rn</strong>
+                <span class="an">86</span>
+                <p>Radon</p>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="am" onclick="handleClick('Fr')">
+              <div class="el">
+                <strong>Fr</strong>
+                <span class="an">87</span>
+                <p>Francium</p>
+              </div>
+            </td>
+            <td class="ap" onclick="handleClick('Ra')">
+              <div class="el">
+                <strong>Ra</strong>
+                <span class="an">88</span>
+                <p>Radium</p>
+              </div>
+            </td>
+            <td class="ac" onclick="handleClick('Ac')">
+              <div class="el">
+                <strong>Ac</strong>
+                <span class="an">89</span>
+                <p>Actinium</p>
+              </div>
+            </td>
+            <td class="tm" onclick="handleClick('Rf')">
+              <div class="el">
+                <strong>Rf</strong>
+                <span class="an">104</span>
+                <p class="ts">Rutherfordium</p>
+              </div>
+            </td>
+            <td class="tm" onclick="handleClick('Db')">
+              <div class="el">
+                <strong>Db</strong>
+                <span class="an">105</span>
+                <p>Dubnium</p>
+              </div>
+            </td>
+            <td class="tm" onclick="handleClick('Sg')">
+              <div class="el">
+                <strong>Sg</strong>
+                <span class="an">106</span>
+                <p class="ts">Seaborgium</p>
+              </div>
+            </td>
+            <td class="tm" onclick="handleClick('Bh')">
+              <div class="el">
+                <strong>Bh</strong>
+                <span class="an">107</span>
+                <p>Bohrium</p>
+              </div>
+            </td>
+            <td class="tm" onclick="handleClick('Hs')">
+              <div class="el">
+                <strong>Hs</strong>
+                <span class="an">108</span>
+                <p>Hassium</p>
+              </div>
+            </td>
+            <td class="tm" onclick="handleClick('Mt')">
+              <div class="el">
+                <strong>Mt</strong>
+                <span class="an">109</span>
+                <p class="ts">Meitnerium</p>
+              </div>
+            </td>
+            <td class="tm" onclick="handleClick('Ds')">
+              <div class="el">
+                <strong>Ds</strong>
+                <span class="an">110</span>
+                <p class="ts">Darmstadtium</p>
+              </div>
+            </td>
+            <td class="tm" onclick="handleClick('Rg')">
+              <div class="el">
+                <strong>Rg</strong>
+                <span class="an">111</span>
+                <p class="ts">Roentgenium</p>
+              </div>
+            </td>
+            <td class="tm" onclick="handleClick('Cn')">
+              <div class="el">
+                <strong>Cn</strong>
+                <span class="an">112</span>
+                <p class="ts">Copernicium</p>
+              </div>
+            </td>
+            <td class="ptm" onclick="handleClick('Nh')">
+              <div class="el">
+                <strong>Nh</strong>
+                <span class="an">113</span>
+                <p>Nihonium</p>
+              </div>
+            </td>
+            <td class="ptm" onclick="handleClick('Fl')">
+              <div class="el">
+                <strong>Fl</strong>
+                <span class="an">114</span>
+                <p>Flerovium</p>
+              </div>
+            </td>
+            <td class="ptm" onclick="handleClick('Mc')">
+              <div class="el">
+                <strong>Mc</strong>
+                <span class="an">115</span>
+                <p class="ts">Moscovium</p>
+              </div>
+            </td>
+            <td class="ptm" onclick="handleClick('Lv')">
+              <div class="el">
+                <strong>Lv</strong>
+                <span class="an">116</span>
+                <p class="ts">Livermorium</p>
+              </div>
+            </td>
+            <td class="ha" onclick="handleClick('Ts')">
+              <div class="el">
+                <strong>Ts</strong>
+                <span class="an">117</span>
+                <p class="ts">Tennessine</p>
+              </div>
+            </td>
+            <td class="ng" onclick="handleClick('Og')">
+              <div class="el">
+                <strong>Og</strong>
+                <span class="an">118</span>
+                <p class="ts">Oganesson</p>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td id="ppty" colspan="18"> </td>
+          </tr>
+          <tr>
+            <td id="ppty" colspan="2"></td>
+            <td class="la">
+            </td>
+            <td class="la" onclick="handleClick('Ce')">
+              <div class="el">
+                <strong>Ce</strong>
+                <span class="an">58</span>
+                <p>Cerium</p>
+              </div>
+            </td>
+            <td class="la" onclick="handleClick('Pr')">
+              <div class="el">
+                <strong>Pr</strong>
+                <span class="an">59</span>
+                <p class="ts">Praseodymium</p>
+              </div>
+            </td>
+            <td class="la" onclick="handleClick('Nd')">
+              <div class="el">
+                <strong>Nd</strong>
+                <span class="an">60</span>
+                <p class="ts">Neodymium</p>
+              </div>
+            </td>
+            <td class="la" onclick="handleClick('Pm')">
+              <div class="el">
+                <strong>Pm</strong>
+                <span class="an">61</span>
+                <p class="ts">Promethium</p>
+              </div>
+            </td>
+            <td class="la" onclick="handleClick('Sm')">
+              <div class="el">
+                <strong>Sm</strong>
+                <span class="an">62</span>
+                <p>Samarium</p>
+              </div>
+            </td>
+            <td class="la" onclick="handleClick('Eu')">
+              <div class="el">
+                <strong>Eu</strong>
+                <span class="an">63</span>
+                <p>Europium</p>
+              </div>
+            </td>
+            <td class="la" onclick="handleClick('Gd')">
+              <div class="el">
+                <strong>Gd</strong>
+                <span class="an">64</span>
+                <p class="ts">Gadolinium</p>
+              </div>
+            </td>
+            <td class="la" onclick="handleClick('Tb')">
+              <div class="el">
+                <strong>Tb</strong>
+                <span class="an">65</span>
+                <p>Terbium</p>
+              </div>
+            </td>
+            <td class="la" onclick="handleClick('Dy')">
+              <div class="el">
+                <strong>Dy</strong>
+                <span class="an">66</span>
+                <p class="ts">Dysprosium</p>
+              </div>
+            </td>
+            <td class="la" onclick="handleClick('Ho')">
+              <div class="el">
+                <strong>Ho</strong>
+                <span class="an">67</span>
+                <p>Holmium</p>
+              </div>
+            </td>
+            <td class="la" onclick="handleClick('Er')">
+              <div class="el">
+                <strong>Er</strong>
+                <span class="an">68</span>
+                <p>Erbium</p>
+              </div>
+            </td>
+            <td class="la" onclick="handleClick('Tm')">
+              <div class="el">
+                <strong>Tm</strong>
+                <span class="an">69</span>
+                <p>Thulium</p>
+              </div>
+            </td>
+            <td class="la" onclick="handleClick('Yb')">
+              <div class="el">
+                <strong>Yb</strong>
+                <span class="an">70</span>
+                <p>Ytterbium</p>
+              </div>
+            </td>
+            <td class="la" onclick="handleClick('Lu')">
+              <div class="el">
+                <strong>Lu</strong>
+                <span class="an">71</span>
+                <p>Lutetium</p>
+              </div>
+            </td>
+            <td id="ppty" colspan="1"> </td>
+          </tr>
+          <tr>
+            <td id="ppty" colspan="2"></td>
+            <td class="ac">
+            </td>
+            <td class="ac" onclick="handleClick('Th')">
+              <div class="el">
+                <strong>Th</strong>
+                <span class="an">90</span>
+                <p>Thorium</p>
+              </div>
+            </td>
+            <td class="ac" onclick="handleClick('Pa')">
+              <div class="el">
+                <strong>Pa</strong>
+                <span class="an">91</span>
+                <p class="ts">Protactinium</p>
+              </div>
+            </td>
+            <td class="ac" onclick="handleClick('U')">
+              <div class="el">
+                <strong>U</strong>
+                <span class="an">92</span>
+                <p>Uranium</p>
+              </div>
+            </td>
+            <td class="ac" onclick="handleClick('Np')">
+              <div class="el">
+                <strong>Np</strong>
+                <span class="an">93</span>
+                <p>Neptunium</p>
+              </div>
+            </td>
+            <td class="ac" onclick="handleClick('Pu')">
+              <div class="el">
+                <strong>Pu</strong>
+                <span class="an">94</span>
+                <p class="ts">Plutonium</p>
+              </div>
+            </td>
+            <td class="ac" onclick="handleClick('Am')">
+              <div class="el">
+                <strong>Am</strong>
+                <span class="an">95</span>
+                <p>Americium</p>
+              </div>
+            </td>
+            <td class="ac" onclick="handleClick('Cm')">
+              <div class="el">
+                <strong>Cm</strong>
+                <span class="an">96</span>
+                <p>Curium</p>
+              </div>
+            </td>
+            <td class="ac" onclick="handleClick('Bk')">
+              <div class="el">
+                <strong>Bk</strong>
+                <span class="an">97</span>
+                <p>Berkelium</p>
+              </div>
+            </td>
+            <td class="ac" onclick="handleClick('Cf')">
+              <div class="el">
+                <strong>Cf</strong>
+                <span class="an">98</span>
+                <p class="ts">Californium</p>
+              </div>
+            </td>
+            <td class="ac" onclick="handleClick('Es')">
+              <div class="el">
+                <strong>Es</strong>
+                <span class="an">99</span>
+                <p class="ts">Einsteinium</p>
+              </div>
+            </td>
+            <td class="ac" onclick="handleClick('Fm')">
+              <div class="el">
+                <strong>Fm</strong>
+                <span class="an">100</span>
+                <p>Fermium</p>
+              </div>
+            </td>
+            <td class="ac" onclick="handleClick('Md')">
+              <div class="el">
+                <strong>Md</strong>
+                <span class="an">101</span>
+                <p class="ts">Mendelevium</p>
+              </div>
+            </td>
+            <td class="ac" onclick="handleClick('No')">
+              <div class="el">
+                <strong>No</strong>
+                <span class="an">102</span>
+                <p>Nobelium</p>
+              </div>
+            </td>
+            <td class="ac" onclick="handleClick('Lr')">
+              <div class="el">
+                <strong>Lr</strong>
+                <span class="an">103</span>
+                <p class="ts">Lawrencium</p>
+              </div>
+            </td>
+            <td id="ppty" colspan="1"> </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="relative">
+      <div class="w-56 p-2 absolute top-20 right-12">
+        <label for="small-range" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Orbitas:</label>
+        <label class="relative inline-flex items-center mb-5 cursor-pointer">
+          <input checked type="checkbox" value="" class="sr-only peer" onclick="displayOrbits()">
+          <div
+            class="w-9 h-5 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600">
+          </div>
+        </label>
+        <!-- progress bar -->
+        <label for="small-range" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Velocidad:</label>
+        <input id="small-range" type="range" min="0" max="10000" value="300"
+          class="w-full h-1 mb-6 bg-gray-200 rounded-lg cursor-pointer range-sm dark:bg-gray-700"
+          onchange="changeSpeed(this.value)">
+        <div>
+          <label class="text-sm font-medium text-gray-900 dark:text-white">Materiales:</label>
+          <div class="flex items-center gap-2 mb-2">
+            <label class="w-28 text-sm font-medium text-gray-900 dark:text-white">Electrones</label>
+            <select class="w-full" onchange="changeElectronMaterial(this.value)">
+              <option>Bronze</option>
+              <option>Chrome</option>
+              <option>Copper</option>
+              <option>Gold</option>
+              <option selected>Silver</option>
+              <option>Emerald</option>
+              <option>Jade</option>
+              <option>Obsidian</option>
+              <option>Ruby</option>
+              <option>Turquoise</option>
+              <option>Black plastic</option>
+              <option>Cyan plastic</option>
+              <option>Green plastic</option>
+              <option>Red plastic</option>
+              <option>White plastic</option>
+              <option>Yellow plastic</option>
+              <option>Black rubber</option>
+              <option>Cyan rubber</option>
+              <option>Green rubber</option>
+              <option>Red rubber</option>
+              <option>White rubber</option>
+              <option>Yellow rubber</option>
+            </select>
+          </div>
+          <div class="flex items-center gap-2 mb-2">
+            <label class="w-28 text-sm font-medium text-gray-900 dark:text-white">Nucleo</label>
+            <select class="w-full" onchange="changeCoreMaterial(this.value)">
+              <option>Bronze</option>
+              <option>Chrome</option>
+              <option>Copper</option>
+              <option>Gold</option>
+              <option>Silver</option>
+              <option>Emerald</option>
+              <option>Jade</option>
+              <option>Obsidian</option>
+              <option selected>Ruby</option>
+              <option>Turquoise</option>
+              <option>Black plastic</option>
+              <option>Cyan plastic</option>
+              <option>Green plastic</option>
+              <option>Red plastic</option>
+              <option>White plastic</option>
+              <option>Yellow plastic</option>
+              <option>Black rubber</option>
+              <option>Cyan rubber</option>
+              <option>Green rubber</option>
+              <option>Red rubber</option>
+              <option>White rubber</option>
+              <option>Yellow rubber</option>
+            </select>
+          </div>
+          <div class="flex items-center gap-2 mb-2">
+            <label class="w-28 text-sm font-medium text-gray-900 dark:text-white">Orbitas</label>
+            <select class="w-full" onchange="changeOrbitMaterial(this.value)">
+              <option>Bronze</option>
+              <option>Chrome</option>
+              <option>Copper</option>
+              <option>Gold</option>
+              <option>Silver</option>
+              <option>Emerald</option>
+              <option>Jade</option>
+              <option>Obsidian</option>
+              <option>Ruby</option>
+              <option>Turquoise</option>
+              <option>Black plastic</option>
+              <option selected>Cyan plastic</option>
+              <option>Green plastic</option>
+              <option>Red plastic</option>
+              <option>White plastic</option>
+              <option>Yellow plastic</option>
+              <option>Black rubber</option>
+              <option>Cyan rubber</option>
+              <option>Green rubber</option>
+              <option>Red rubber</option>
+              <option>White rubber</option>
+              <option>Yellow rubber</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div id="selectedElement" class="w-40 absolute top-20 left-12">
+      </div>
+      <canvas id="myCanvas">
+        El Navegador no soporta HTML5
+      </canvas>
+    </div>
+    <script id="myVertexShader" type="x-shader/x-vertex">
+      uniform   mat4 projectionMatrix;
+      uniform   mat4 modelViewMatrix;
+      uniform   mat3 normalMatrix;
+      
+      attribute vec3 VertexPosition;
+      attribute vec3 VertexNormal;
+      
+      varying   vec3 colorOut;
+
+      struct LightData {
+        vec3 Position; // Posición en coordenadas del ojo
+        vec3 La;       // Ambiente
+        vec3 Ld;       // Difusa
+        vec3 Ls;       // Especular
+      };
+      uniform LightData Light;
+
+      struct MaterialData {
+        vec3 Ka;       // Ambiente
+        vec3 Kd;       // Difusa
+        vec3 Ks;       // Especular
+        float alpha;   // Brillo
+      };
+      uniform MaterialData Material;
+      
+      vec3 phong (vec3 N, vec3 L, vec3 V) {
+      
+        vec3  ambient  = Material.Ka * Light.La;
+        vec3  diffuse  = vec3(0.0);
+        vec3  specular = vec3(0.0);
+        
+        float NdotL    = dot (N,L);
+        
+        if (NdotL > 0.0) {
+          vec3  R       = reflect(-L, N);;
+          float RdotV_n = pow(max(0.0, dot(R,V)), Material.alpha);
+          
+          diffuse  = NdotL   * (Light.Ld * Material.Kd);
+          specular = RdotV_n * (Light.Ls * Material.Ks);
+        }
+        
+        return (ambient + diffuse + specular);
+        
+      }
+      
+      void main()  {
+        vec3 N          = normalize(normalMatrix * VertexNormal);
+        vec4 ecPosition = modelViewMatrix * vec4(VertexPosition,1.0);
+        vec3 ec         = vec3(ecPosition);
+        vec3 L          = normalize(Light.Position - ec);
+        vec3 V          = normalize(-ec);
+        colorOut        = phong(N,L,V);
+        gl_Position     = projectionMatrix * ecPosition;
+      }
+
+    </script>
+    <script id="myFragmentShader" type="x-shader/x-fragment">
+
+      precision mediump float;
+      
+      varying vec3 colorOut;
+
+      void main() {
+      
+        gl_FragColor = vec4(colorOut,1);
+      
+      }
+      
+    </script>
+
+    <script src="src/gl-matrix-min.js"></script>
+    <script src="src/materiales.js"></script>
+    <script src="src/primitivas.js"></script>
+    <script src="src/data.js"></script>
+    <script src="src/index.js"></script>
+
+</body>
+
+</html>
