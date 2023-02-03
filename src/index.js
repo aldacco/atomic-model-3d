@@ -154,15 +154,22 @@ function drawSolid(model) {
   gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, model.idBufferIndices);
   gl.drawElements(gl.TRIANGLES, model.indices.length, gl.UNSIGNED_SHORT, 0);
 }
-var animacion = 0
-var animacion2 = 0
 
+var TOTAL_ELECTRONS = 1
+var SHOW_ORBITS = true
+var VELOCIDAD = 360;
+var ELECTRON_MATERIAL = Silver
+var ORBIT_MATERIAL = Cyan_rubber
+var CORE_MATERIAL = Ruby
+
+var animacion = 0
 function animation() {
   animacion += Math.PI / VELOCIDAD;
-  animacion2 += Math.PI / 90;
   drawScene();
   requestAnimationFrame(animation);
 }
+
+const generateAngle = (angle) => Math.PI * angle / 180;
 
 function drawCenterSphere() {
   // se calcula la matriz de transformación del modelo
@@ -191,67 +198,6 @@ function drawCenterSphere() {
   // se dibuja la primitiva seleccionada
   drawSolid(selectedPrimitive)
 }
-
-var distancia = 3
-var orbita = 0
-var tiempo = 0
-
-function drawElectrons(numero) {
-  for (let i = 0; i < numero; i++) {
-    var modelMatrix = mat4.create();
-    mat4.identity(modelMatrix);
-    mat4.scale(modelMatrix, modelMatrix, [0.1, 0.1, 0.1]);
-
-    mat4.rotateY(modelMatrix, modelMatrix, animacion);
-    mat4.translate(modelMatrix, modelMatrix, [distancia, 0, 0]);
-    // mat4.rotateZ(modelMatrix, modelMatrix, tiempo);
-
-    var modelViewMatrix = mat4.create();
-    mat4.multiply(modelViewMatrix, getCameraMatrix(), modelMatrix);
-    setShaderModelViewMatrix(modelViewMatrix);
-
-    var normalMatrix = mat3.create();
-    normalMatrix = getNormalMatrix(modelViewMatrix);
-    setShaderNormalMatrix(normalMatrix);
-
-    var projectionMatrix = mat4.create();
-    projectionMatrix = getProjectionMatrix();
-    setShaderProjectionMatrix(projectionMatrix);
-
-    setShaderMaterial(Silver);
-
-    drawSolid(selectedPrimitive);
-
-    var modelMatrix2 = mat4.create();
-    mat4.identity(modelMatrix2);
-    mat4.scale(modelMatrix2, modelMatrix2, [0.01, 0.01, 0.01]);
-
-    mat4.translate(modelMatrix2, modelMatrix2, [modelMatrix[17], modelMatrix[18], modelMatrix[19]]);
-
-    var modelViewMatrix2 = mat4.create();
-    mat4.multiply(modelViewMatrix2, getCameraMatrix(), modelMatrix2);
-    setShaderModelViewMatrix(modelViewMatrix2);
-
-    var normalMatrix2 = mat3.create();
-    normalMatrix2 = getNormalMatrix(modelViewMatrix2);
-    setShaderNormalMatrix(normalMatrix2);
-
-    var projectionMatrix2 = mat4.create();
-    projectionMatrix2 = getProjectionMatrix();
-    setShaderProjectionMatrix(projectionMatrix2);
-
-    setShaderMaterial(White_plastic);
-
-    drawSolid(selectedPrimitive);
-
-    orbita = orbita + (Math.PI * 2 / numero);
-    tiempo = tiempo + 0.01
-    distancia = distancia + 0.1
-  }
-}
-
-const generateAngle = (angle) => Math.PI * angle / 180;
-
 const drawElectron = (radius, orbitAngle, direction = 1, velocidad) => {
   var modelMatrix = mat4.create();
   mat4.identity(modelMatrix);
@@ -277,62 +223,13 @@ const drawElectron = (radius, orbitAngle, direction = 1, velocidad) => {
   drawSolid(selectedPrimitive);
 }
 
-const drawNumberElectron = () => {
-  var modelMatrix = mat4.create();
-  mat4.identity(modelMatrix);
-  mat4.scale(modelMatrix, modelMatrix, [0.1, 0.1, 0.1]);
 
-
-  mat4.translate(modelMatrix, modelMatrix, [20, 0, 0]);
-
-  var modelViewMatrix = mat4.create();
-  mat4.multiply(modelViewMatrix, getCameraMatrix(), modelMatrix);
-  setShaderModelViewMatrix(modelViewMatrix);
-
-  var normalMatrix = mat3.create();
-  normalMatrix = getNormalMatrix(modelViewMatrix);
-  setShaderNormalMatrix(normalMatrix);
-
-  var projectionMatrix = mat4.create();
-  projectionMatrix = getProjectionMatrix();
-  setShaderProjectionMatrix(projectionMatrix);
-  setShaderMaterial(Silver);
-  drawSolid(selectedPrimitive);
-}
-
-var TOTAL_ELECTRONS = 1
-var SHOW_ORBITS = true
-var VELOCIDAD = 3600;
-var ELECTRON_MATERIAL = Silver
-var ORBIT_MATERIAL = Cyan_rubber
-var CORE_MATERIAL = Ruby
-
-function drawScene() {
-  // se inicializan los buffers de color y de profundidad
-  gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
-  // drawElectrons(4)
-  let totalElectrons = TOTAL_ELECTRONS
-  let showOrbits = SHOW_ORBITS
-  const electronsForLevel = [2, 8, 18, 32, 32, 18, 8]
-  for (let i = 0; i < electronsForLevel.length; i++) {
-    let remainingElectrons = totalElectrons - electronsForLevel[i] > 0 ? electronsForLevel[i] : totalElectrons
-    for (let j = 0; j < remainingElectrons; j++) {
-      showOrbits ? drawOrbita(2 + i, generateAngle(180 / remainingElectrons) * j) : null
-      drawElectron(i * 5, generateAngle(180 / remainingElectrons) * j, j % 2 === 0 ? 1 : -1, (i + 1) * (j + 1))
-    }
-    totalElectrons -= electronsForLevel[i]
-  }
-  drawCenterSphere()
-}
 function drawOrbita(orbitRadius, orbitAngle) {
   // se calcula la matriz de transformación del modelo
   var modelMatrix = mat4.create();
   mat4.identity(modelMatrix);
   mat4.scale(modelMatrix, modelMatrix, [orbitRadius, orbitRadius, orbitRadius]);
   mat4.rotateX(modelMatrix, modelMatrix, orbitAngle);
-
-  // mat4.rotateX(modelMatrix, modelMatrix, Math.PI * orbitRadius / 2);
-  // mat4.rotateY(modelMatrix, modelMatrix, animacion);
 
   // se opera la matriz de transformacion de la camara con la del modelo y se envia al shader
   var modelViewMatrix = mat4.create();
@@ -355,11 +252,35 @@ function drawOrbita(orbitRadius, orbitAngle) {
   // se dibuja la primitiva seleccionada
   drawSolid(myTorus);
 }
+function drawScene() {
+  // se inicializan los buffers de color y de profundidad
+  gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+
+  let totalElectrons = TOTAL_ELECTRONS
+  let showOrbits = SHOW_ORBITS
+
+  const electronsForLevel = [2, 8, 18, 32, 32, 18, 8]
+  for (let i = 0; i < electronsForLevel.length; i++) {
+    let remainingElectrons = totalElectrons - electronsForLevel[i] > 0 ? electronsForLevel[i] : totalElectrons
+    for (let j = 0; j < remainingElectrons; j++) {
+      let angle = generateAngle(180 / remainingElectrons) * j
+      let direction = j % 2 === 0 ? 1 : -1
+      let boostVelocidad = (i + 1) * (j + 1)
+
+      showOrbits ? drawOrbita(2 + i, angle) : null
+      drawElectron(i * 5, angle, direction, boostVelocidad)
+    }
+    totalElectrons -= electronsForLevel[i]
+  }
+  drawCenterSphere()
+}
 
 //FUNCIONES UI
 var SELECTED_ELEMENT
 function handleClick(symbol) {
   const element = findElementBySymbol(symbol)
+  window.scrollTo(0, document.body.scrollHeight);
+
   SELECTED_ELEMENT = element
   TOTAL_ELECTRONS = element.NumberofElectrons
   SelectedElement()
@@ -481,20 +402,6 @@ function initWebGL() {
   initPrimitives();
   initRendering();
   initHandlers();
-
-  // requestAnimationFrame(drawScene);
 }
 
 initWebGL();
-
-
-//parametros
-/*
-- Colores 
-- Material
-- Iluminacion
-- Texturas
-- Velocidad
-
-- Tabla periodica
- */
