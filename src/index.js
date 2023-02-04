@@ -196,7 +196,7 @@ function drawCenterSphere() {
   setShaderMaterial(CORE_MATERIAL);
 
   // se dibuja la primitiva seleccionada
-  drawSolid(selectedPrimitive)
+  drawSolid(exampleSphere)
 }
 const drawElectron = (radius, orbitAngle, direction = 1, velocidad) => {
   var modelMatrix = mat4.create();
@@ -220,7 +220,7 @@ const drawElectron = (radius, orbitAngle, direction = 1, velocidad) => {
   projectionMatrix = getProjectionMatrix();
   setShaderProjectionMatrix(projectionMatrix);
   setShaderMaterial(ELECTRON_MATERIAL);
-  drawSolid(selectedPrimitive);
+  drawSolid(exampleSphere);
 }
 
 
@@ -265,12 +265,13 @@ function drawScene() {
     for (let j = 0; j < remainingElectrons; j++) {
       let angle = generateAngle(180 / remainingElectrons) * j
       let direction = j % 2 === 0 ? 1 : -1
-      let boostVelocidad = (i + 1) * (j + 1)
+      let boostVelocidad =   (i + 1) * (j + 1)
 
       showOrbits ? drawOrbita(2 + i, angle) : null
       drawElectron(i * 5, angle, direction, boostVelocidad)
     }
     totalElectrons -= electronsForLevel[i]
+    if (totalElectrons <= 0) break
   }
   drawCenterSphere()
 }
@@ -374,7 +375,6 @@ function initHandlers() {
       requestAnimationFrame(drawScene);
     },
     false);
-  selectedPrimitive = exampleSphere;
   requestAnimationFrame(animation);
 }
 function setColor(index, value) {
